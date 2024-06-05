@@ -3,6 +3,8 @@ from .rectangle import Rectangle
 note_step = 0.0625
 
 note_defs = {
+     -6 : ("b5", 83),
+     -5 : ("a5", 81),
      -4 : ("g5", 79),
      -3 : ("f5", 77),
      -2 : ("e5", 76),

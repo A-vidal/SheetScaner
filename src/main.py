@@ -152,6 +152,42 @@ def midi_file_2(note_group, file = 'output.mid'):
     binfile.close()
 
 def find_notes(img, debug = False):
+    staff_files = [
+    "src/template/staff2.png", 
+    "src/template/staff.png"]
+    quarter_files = [
+        "src/template/quarter.png", 
+        "src/template/solid-note.png"]
+    sharp_files = [
+        "src/template/sharp.png"]
+    flat_files = [
+        "src/template/flat-line.png", 
+        "src/template/flat-space.png" ]
+    half_files = [
+        "src/template/half-space.png", 
+        "src/template/half-note-line.png",
+        "src/template/half-line.png", 
+        "src/template/half-note-space.png"]
+    whole_files = [
+        "src/template/whole-space.png", 
+        "src/template/whole-note-line.png",
+        "src/template/whole-line.png", 
+        "src/template/whole-note-space.png"]
+
+    staff_imgs = [cv2.imread(staff_file, 0) for staff_file in staff_files]
+    quarter_imgs = [cv2.imread(quarter_file, 0) for quarter_file in quarter_files]
+    sharp_imgs = [cv2.imread(sharp_files, 0) for sharp_files in sharp_files]
+    flat_imgs = [cv2.imread(flat_file, 0) for flat_file in flat_files]
+    half_imgs = [cv2.imread(half_file, 0) for half_file in half_files]
+    whole_imgs = [cv2.imread(whole_file, 0) for whole_file in whole_files]
+
+    staff_lower, staff_upper, staff_thresh = 50, 150, 0.77
+    sharp_lower, sharp_upper, sharp_thresh = 50, 150, 0.70
+    flat_lower, flat_upper, flat_thresh = 50, 150, 0.77
+    quarter_lower, quarter_upper, quarter_thresh = 50, 150, 0.70
+    half_lower, half_upper, half_thresh = 50, 150, 0.70
+    whole_lower, whole_upper, whole_thresh = 50, 150, 0.70
+
     img_gray = img
     img = cv2.cvtColor(img_gray, cv2.COLOR_GRAY2RGB)
     ret,img_gray = cv2.threshold(img_gray,127,255,cv2.THRESH_BINARY)
